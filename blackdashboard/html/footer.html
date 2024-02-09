@@ -1,0 +1,14 @@
+<footer class="footer">
+  <div class="container-fluid">
+    <ul class="nav">
+      % for item in menu:
+        <li class="nav-item">
+          <a href="${item['href']}" class="nav-link">${item['name']}</a>
+        </li>
+      % endfor
+    </ul>
+    <div class="copyright">
+      ${copyright}
+    </div>
+  </div>
+</footer>

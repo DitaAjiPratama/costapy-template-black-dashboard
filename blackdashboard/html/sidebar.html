@@ -1,0 +1,27 @@
+<div class="sidebar" data-color="${color}">
+  <!--
+    Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+-->
+  <div class="sidebar-wrapper">
+    <div class="logo">
+      <a href="javascript:void(0)" class="simple-text logo-mini">
+        <img src="${logo}">
+      </a>
+      <a href="javascript:void(0)" class="simple-text logo-normal">
+        ${title}
+      </a>
+    </div>
+    <ul class="nav">
+      % for item in menu:
+        % if any(role in item['roles'] for role in user_roles):
+          <li class="${'active' if item['name'] == active_page else ''}">
+            <a href="${item['href']}">
+              <i class="${item['icon']}"></i>
+              <p>${item['name']}</p>
+            </a>
+          </li>
+        % endif
+      % endfor
+    </ul>
+  </div>
+</div>
