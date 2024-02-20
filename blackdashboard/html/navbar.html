@@ -9,7 +9,7 @@
           <span class="navbar-toggler-bar bar3"></span>
         </button>
       </div>
-      <a class="navbar-brand" href="${baseurl}">${title}</a>
+      <a class="navbar-brand" href="javascript:void(0)">${title}</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -24,38 +24,40 @@
           </button>
         </li> -->
 
-        <li class="dropdown nav-item">
-          <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-            <div class="notification d-none d-lg-block d-xl-block"></div>
-            <i class="${menu_icon}"></i>
-            <p class="d-lg-none">
-              ${menu_name}
-            </p>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-            % for item in menu:
-              <li class="nav-link">
-                <a href="${item['href']}" class="nav-item dropdown-item">
-                  ${item['name']}
-                </a>
-              </li>
-            % endfor
-          </ul>
-        </li>
+        % for item in menu:
+          <li class="dropdown nav-item">
+            <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
+              <div class="${'notification' if item['notification'] == True else ''} d-none d-lg-block d-xl-block"></div>
+              <i class="${item['icon']}"></i>
+              <p class="d-lg-none">
+                ${item['name']}
+              </p>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
+              % for link in item['list']:
+                <li class="nav-link">
+                  <a href="${link['href']}" class="nav-item dropdown-item">
+                    ${link['name']}
+                  </a>
+                </li>
+              % endfor
+            </ul>
+          </li>
+        % endfor
 
         <li class="dropdown nav-item">
           <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
             <div class="photo">
-              <img src="${profile_picture}" alt="Profile Photo">
+              <img src="${profile['picture']}" alt="Photo">
             </div>
             <b class="caret d-none d-lg-block d-xl-block"></b>
             <p class="d-lg-none">
-              ${profile_name}
+              ${profile['name']}
             </p>
           </a>
           <ul class="dropdown-menu dropdown-navbar">
 
-            % for item in profile_menu:
+            % for item in profile['menu']:
               <li class="nav-link">
                 <a href="${item['href']}" class="nav-item dropdown-item">
                   ${item['name']}

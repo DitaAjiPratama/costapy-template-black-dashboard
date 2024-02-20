@@ -13,7 +13,7 @@
     </div>
     <ul class="nav">
       % for item in menu:
-        % if any(role in item['roles'] for role in user_roles):
+        % if any(role in item['roles'] for role in roles):
           <li class="${'active' if item['name'] == active_page else ''}">
             <a href="${item['href']}">
               <i class="${item['icon']}"></i>

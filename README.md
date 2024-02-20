@@ -17,15 +17,11 @@ Dashboard template from [Creative Tim](https://www.creative-tim.com/product/blac
         title           = "CostaPy"
         baseurl         = "http://localhost"
 
-        menu_icon       = "fa fa-user-tie"
-        menu_name       = "Dashboard"
-        profile_picture = "http://localhost/profile/1.jpg"
-        profile_name    = "John Smith"
         logout          = "http://localhost/logout"
 
         color           = "blue"              # blue | green | orange | red
         logo            = "http://localhost/logo.png"
-        user_roles      = ["member"]          # A roles that user have
+        roles           = [2]                 # A roles that user have
         active_page     = "Dashboard"         # Current active page name
 
         copyright       = "Dita Aji Pratama"  # Copyright on the footer
@@ -34,29 +30,34 @@ Dashboard template from [Creative Tim](https://www.creative-tim.com/product/blac
 
         navbar_menu = [
           {
-            "name"  :"Home",
-            "href"  :"/"
-          },
-          {
-            "name"  :"Dashboard",
-            "href"  :"#"
-          },
-          {
-            "name"  :"CostaPy Website",
-            "href"  :"https://costapy.ditaajipratama.com"
+            "icon"  :"tim-icons icon-bell-55",
+            "name"  :"Notifications",
+            "list"  :[
+              {
+                "name"  :"See all notifications",
+                "href"  :"#"
+              }
+            ],
+            "notification":False
           }
         ]
 
-        profile_menu = [
-          {
-            "name"  :"Profile",
-            "href"  :"/profile"
-          },
-          {
-            "name"  :"Setting",
-            "href"  :"/setting"
-          }
-        ]
+- Config a profile on your modules function
+
+        data_profile	= {
+  				"picture"	: "http://localhost/profile/1.jpg",
+  				"name"		: "John Smith",
+  				"menu"		: [
+            {
+              "name"  :"Profile",
+              "href"  :"/profile"
+            },
+            {
+              "name"  :"Setting",
+              "href"  :"/setting"
+            }
+          ]
+  			}
 
 - Config a sidebar menu on your modules function
 
@@ -65,13 +66,13 @@ Dashboard template from [Creative Tim](https://www.creative-tim.com/product/blac
             "icon"  :"fa fa-home",
             "name"  :"Dashboard",
             "href"  :"/",
-            "roles" :["member", "admin"]
+            "roles" :[1,2]
           },
           {
             "icon"  :"fa fa-users",
             "name"  :"Users",
             "href"  :"/users",
-            "roles" :["admin"]
+            "roles" :[1]
           }
         ]
 
@@ -93,20 +94,15 @@ Dashboard template from [Creative Tim](https://www.creative-tim.com/product/blac
           baseurl   = baseurl,
           navbar    = Template(params["mako"]["website"]['navbar']).render(
             title           = title,
-            baseurl         = baseurl,
-            menu_icon       = menu_icon,
-            menu_name       = menu_name,
             menu            = navbar_menu,
-            profile_picture = profile_picture,
-            profile_name    = profile_name,
-            profile_menu    = profile_menu,
+            profile         = data_profile,
             logout          = logout
           ),
           sidebar   = Template(params["mako"]["website"]['sidebar']).render(
             color           = color,
             logo            = logo,
             title           = title,
-            user_roles      = user_roles,
+            roles           = roles,
             active_page     = active_page,
             menu            = sidebar_menu
           ),
