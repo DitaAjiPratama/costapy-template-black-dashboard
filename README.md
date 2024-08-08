@@ -1,5 +1,5 @@
 # CostaPy Template - Black Dashboard
-Dashboard template from [Creative Tim](https://www.creative-tim.com/product/black-dashboard#) that has been designed for CostaPy
+Modified dashboard template from [Creative Tim](https://www.creative-tim.com/product/black-dashboard#) that has been designed for CostaPy
 
 ## Usage
 
